@@ -1,0 +1,44 @@
+├── 01-basic-commands
+│     └── basic-docker-commands.md
+│
+├── 02-container-management
+│     └── container-commands.md
+│
+├── 03-docker-volumes
+│     └── volume-commands.md
+│
+├── 04-dockerhub
+│     └── push-image.md
+│
+├── 05-dockerfile
+│     ├── Dockerfile
+│     └── dockerfile-notes.md
+
+docker ps
+docker ps -a
+# Docker Basic Commands
+
+## Run interactive container
+docker run -it ubuntu bash
+
+## Run container in detached mode
+docker run -d nginx
+
+## Run container with name & env variable
+docker run -it --name my_app -e APP_ENV=production my_image bash
+
+## Port mapping example
+docker run -d -p 3307:3306 --name mysql-test -e MYSQL_ROOT_PASSWORD=root123 mysql
+
+docker run -d --name DB-APP -p 80:8082 mongo
+docker run -it --name nginx-app -p 8080:8080 -e nginx\_port=8080 nginx bash
+
+
+## Run Ubuntu with env variable
+docker run -it --name myubuntu -e college=cse ubuntu bash
+
+-d → Detached mode (background)
+-it → Interactive terminal
+-p → Port mapping
+-e → Environment variable
+

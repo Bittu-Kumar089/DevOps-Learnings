@@ -1,0 +1,136 @@
+ Q1. Pull an Ubuntu image and run a container in interactive mode.
+Commands
+docker pull ubuntu
+docker run -it --name ubuntu-container ubuntu bash
+
+//Explanation
+Pulls image from Docker Hub
+Runs container with terminal access.
+ Q2. Create a file inside container and verify it exists.
+Inside container
+echo "Hello Docker Lab" > test.txt
+ls
+cat test.txt
+
+//Result
+//File created inside container filesystem.
+ Q3. Show that data is lost after deleting a container.
+Exit & remove container
+exit
+docker rm ubuntu-container
+
+Run new container
+docker run -it ubuntu bash
+ls
+
+//Result
+//test.txt will NOT exist → container storage is temporary.
+
+Q4. Create a Docker Volume and verify it exists.
+docker volume create studentdata
+docker volume ls
+
+//Result
+//Volume studentdata created.
+
+Q5. Run container with volume mounted.
+docker run -it --name container1 -v studentdata:/student ubuntu bash
+
+Inside container:
+cd /student
+echo "Persistent Data" > data.txt
+exit
+
+ Q6. Delete container and verify volume still exists.
+docker rm container1
+docker volume ls
+
+//Result
+//Volume still exists → proves persistence.
+
+ Q7. Attach same volume to new container and verify data.
+docker run -it --name container2 -v studentdata:/student ubuntu bash
+cd /student
+ls
+cat data.txt
+
+//Result
+//File still present → data persisted.
+
+Q8. Demonstrate data sharing between two containers.
+
+docker run -it --name containerA -v studentdata:/student ubuntu bash
+cd /student
+echo "Shared File" > shared.txt
+
+docker run -it --name containerB -v studentdata:/student ubuntu bash
+cd /student
+cat shared.txt
+
+//Result
+//Both containers access same file.
+
+Q9. Install curl inside Alpine container.
+docker run -it --name curlcontainer alpine sh
+apk update
+apk add curl
+curl --version
+
+Q10. Convert container into new image using commit.
+docker commit curlcontainer myalpinecurl:v1
+docker images
+
+//Result
+//New custom image created.
+
+Q11. Run container from new image and verify changes.
+docker run -it myalpinecurl:v1 sh
+curl --version
+
+//Result
+//Curl available → proves image saved changes.
+
+Q12. Tag image for Docker Hub.
+docker tag myalpinecurl:v1 username/myalpinecurl:v1
+
+Q13. Push image to Docker Hub.
+docker login
+docker push username/myalpinecurl:v1
+
+Q14. Remove local image and pull again from Docker Hub.
+docker rmi username/myalpinecurl:v1
+docker pull username/myalpinecurl:v1
+
+//Result
+//Image downloaded from cloud repository.
+
+Q15. Difference between container and image (Practical proof).
+Show running containers
+docker ps -a
+
+Show images
+docker images
+
+//Image → blueprint
+//Container → running instance.
+
+Q16. Remove container and image.
+Remove container:
+docker rm container2
+
+Remove image:
+docker rmi myalpinecurl:v1
+
+Q17. Inspect Docker volume location.
+docker volume inspect studentdata
+
+//Result
+//Shows volume storage path.
+
+Q18. Run temporary container to check volume data.
+docker run --rm -it -v studentdata:/student ubuntu bash
+cd /student
+ls
+
+//Result
+//Volume data still exists even after containers deleted.

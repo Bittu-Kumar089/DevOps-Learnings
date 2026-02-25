@@ -1,0 +1,26 @@
+Create a Docker volume named studentdata.
+cmd= docker volume create studentdata
+docker volume ls
+docker volume inspect studentdata
+
+Run an Ubuntu container and mount studentdata at /student.
+cmd=  docker run -it --name c1 -v studentdata:/student ubuntu bash
+root@f00c3069d592:/# cd /student
+echo "Hello from container c1" > note.txt
+ls
+cat note.txt
+exit
+Create a file inside the container and verify it persists after container deletion.
+cmd= docker rm c1
+
+Attach the same volume to another container and verify the file exists.
+cmd=  docker run -it --name c2 -v studentdata:/student ubuntu bash
+root@5dbc3b1c57b1:/# ls /student
+cat /student/note.txt
+exit
+Demonstrate data sharing between two containers using a shared volume.
+cmd= docker run -d --name c3 -v studentdata:/student ubuntu sleep infinity
+docker run -d --name c4 -v studentdata:/student ubuntu sleep infinity
+
+Show that deleting a container does NOT delete the volume data.
+cmd= docker rm -f c2 c3 c4

@@ -1,0 +1,20 @@
+Create a Docker Volume
+cmd=docker volume create mydata
+Inspect Volume Details
+cmd= docker volume inspect mydata
+Run Container Using Volume
+cmd= docker run -d -v mydata:/app/data --name my_container ubuntu
+Store Data in the Volume
+cmd= PS C:\Users\harik> docker run -it -v mydata:/app/data ubuntu sh
+# 
+# cd /app/data
+# echo "Hello Docker Volume" > file.txt
+# exit
+PS C:\Users\harik
+Verify Data Persistence
+cmd= docker run -it -v mydata:/app/data ubuntu sh
+# cat /app/data/file.txt
+docker volume rm mydata
+cmd= docker volume rm mydata
+remove all volume data
+cmd= docker volume prune

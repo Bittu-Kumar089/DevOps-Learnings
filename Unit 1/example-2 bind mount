@@ -1,0 +1,13 @@
+Host folder 
+       C:\docker\website\index.html
+Run container
+docker run -it   --mounttype=bind,source="C:\docker\website",target=/usr/share/nginx/html    -p 8080:80  nginx
+Edit file on HOST
+<h1>Hello from Host</h1>
+Browser
+http://localhost:8080
+Effects ………
+Host directory is directly mapped
+Changes on host reflect instantly
+Container restart does NOT affect data
+ Best for development, live code editing

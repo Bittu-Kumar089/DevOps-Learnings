@@ -1,0 +1,27 @@
+Practice Questions on Basic Docker Commands
+Run a Docker container named “DB-app" based on the
+“mongodb" image, and expose port 80 on the host to port 8082
+on the container?
+Cmd= docker run -d --name DB-app -p 80:8082 mongo
+question 3
+15. 3. How would you use the docker run command with -it, -e, -v,
+and --name to
+•
+Set an environment variable
+APP_ENV=production.
+•
+Bind a local directory /app/data to
+/data inside the container.
+•
+Name the container my_app.
+•
+Start an interactive terminal in an image called my_image?
+•
+Write the full command for the scenario above.
+Cmd= docker run -it --name my_app -e APP_ENV=production -v C:\app\data:/data ubuntu bash(then cotainer open) root@5e808546f3ac:/# echo $APP_ENV
+production
+root@5e808546f3ac:/# cd /data
+root@5e808546f3ac:/data# ls
+root@5e808546f3ac:/data# echo "Hello Docker Volume" > test.txt
+root@5e808546f3ac:/data# exit
+exit

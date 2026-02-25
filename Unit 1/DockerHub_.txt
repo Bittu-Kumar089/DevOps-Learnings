@@ -1,0 +1,16 @@
+# Push Image to Docker Hub
+
+## Commit container to image
+docker commit curlcontainer myalpinecurl:v1
+
+## Tag image
+docker tag myalpinecurl:v1 anjalimishra123/myalpinecurl:v1
+
+## Login
+docker login
+
+## Push image
+docker push anjalimishra123/myalpinecurl:v1
+
+✔ docker commit creates NEW image
+Original image remains unchanged.

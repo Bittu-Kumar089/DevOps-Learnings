@@ -1,0 +1,31 @@
+# Docker Volumes & Persistence
+
+## Create volume
+docker volume create studentdata
+docker volume ls
+
+## Run container with volume
+docker run -it --name container1 -v studentdata:/student ubuntu bash
+
+## Create file inside container
+cd /student
+echo "This is persistent student data" > data.txt
+cat data.txt
+exit
+
+## Delete container (volume still exists)
+docker rm container1
+
+## Attach volume to new container
+docker run -it --name container2 -v studentdata:/student ubuntu bash
+cat /student/data.txt
+
+✔ Data persists even after container deletion.
+
+## Data sharing between containers
+docker run -it --name containerA -v studentdata:/student ubuntu bash
+echo "Shared between containers" > /student/shared.txt
+
+Open new terminal:
+docker run -it --name containerB -v studentdata:/student ubuntu bash
+cat /student/shared.txt

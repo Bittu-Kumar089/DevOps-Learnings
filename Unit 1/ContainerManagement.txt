@@ -1,0 +1,19 @@
+# Container Management
+
+## View logs
+docker logs -f my_app
+
+## Start container
+docker start web_server
+
+## Stop container
+docker stop web_server
+
+## Exec into running container
+docker exec -it my_app bash
+
+## Remove container
+docker rm container_name
+
+## Remove running container forcefully
+docker rm -f container_name

@@ -1,0 +1,25 @@
+To demonstrate real-time file synchronization between host and container.
+On the host system, create a directory named webdata.
+Inside it, create a file index.html with the content:
+     <h1>Welcome from Host</h1>
+Run an Nginx container and bind mount the host directory to
+/usr/share/nginx/html using --mount.
+Expose the container on port 8080.
+Open a browser and verify the page loads.
+Modify index.html on the host to:
+<h1>Updated from Host</h1>
+Refresh the browser and observe the change.
+cmd= PS C:\docker\website> mkdir C:\webdata
+
+    Directory: C:\
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          17-02-2026    18:58                webdata
+
+PS C:\docker\website> notepad C:\webdata\index.html
+PS C:\docker\website> docker run -d --name web_sync `--mount type=bind,source=C:\webdata,target=/usr/share/nginx/html `-p 8080:80 nginx
+cc45133770da1872e37daa205c01f057cece26a7e5bd87787a7e575713367fb0
+PS C:\docker\website> notepad C:\webdata\index.html
+PS C:\docker\website> 
+

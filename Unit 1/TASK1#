@@ -1,0 +1,2 @@
+docker run -it -e COLLEGE=CSE ubuntu bash
+in side container write echo $COLLEGE

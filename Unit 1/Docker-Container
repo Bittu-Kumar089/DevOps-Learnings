@@ -1,0 +1,17 @@
+1. You need to start a new container using the nginx image
+while setting an environment variable
+ENV_MODE=production. Write the docker run command to
+achieve this.
+cmd= docker run -d --name nginx_app -e ENV_MODE=production nginx
+Question 2
+2. You have a running container named my_app, but it's not
+behaving as expected. You want to check its logs to debug any
+errors. Write the command to view its logs and follow new log
+entries in real-time.
+cmd= docker logs -f my_app
+Question 3:
+3. A container named web_server was stopped. Write the
+command to:a) Start the container again.b) Stop the container
+when needed.
+Cmd= docker start web_server
+cmd= docker stop web_server

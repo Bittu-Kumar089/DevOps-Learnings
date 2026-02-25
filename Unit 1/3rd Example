@@ -1,0 +1,1 @@
+Setting Enviroment : Cmd= docker run -e MY_VAR=value httpd env

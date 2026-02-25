@@ -1,0 +1,306 @@
+##  Docker Cheatsheet (Beginner → Practical Ready)
+
+> Quick reference + concepts explained simply for labs, viva, and revision
+
+---
+
+# 1. Core Concepts (Must Understand)
+
+| Term       | Meaning                     | Real Life Example  |
+| ---------- | --------------------------- | ------------------ |
+| Image      | Blueprint/template          | Pizza recipe       |
+| Container  | Running instance of image   | Cooked pizza       |
+| Dockerfile | Instructions to build image | Written recipe     |
+| Volume     | Permanent storage           | Hard disk / fridge |
+| Docker Hub | Cloud image repository      | GitHub for images  |
+
+---
+
+# 2. Container Life Cycle
+
+```
+Image → Created → Running → Stopped → Deleted
+```
+
+| Command       | What it does                     |
+| ------------- | -------------------------------- |
+| docker create | Makes container but does not run |
+| docker start  | Starts existing container        |
+| docker run    | Create + start together          |
+
+---
+
+# 3. Basic Commands
+
+## Run Interactive Ubuntu
+
+```
+docker run -it ubuntu bash
+```
+
+## Run in Background (Detached Mode)
+
+```
+docker run -d nginx
+```
+
+## Run with Name + Environment Variable
+
+```
+docker run -it --name my_app -e APP_ENV=production ubuntu bash
+```
+
+## View Containers
+
+```
+docker ps
+docker ps -a
+```
+
+---
+
+# 4. Container Management
+
+## Logs
+
+```
+docker logs -f container_name
+```
+
+## Start / Stop
+
+```
+docker start container_name
+docker stop container_name
+```
+
+## Enter Running Container
+
+```
+docker exec -it container_name bash
+```
+
+## Remove Container
+
+```
+docker rm container_name
+```
+
+## Force Remove Running Container
+
+```
+docker rm -f container_name
+```
+
+---
+
+# 5. Temporary Storage (Container Filesystem)
+
+Inside container:
+
+```
+echo "Hello Docker" > test.txt
+```
+
+Delete container → file gone 
+
+> Container storage is temporary
+
+---
+
+# 6. Volumes (Permanent Storage)
+
+## Create Volume
+
+```
+docker volume create studentdata
+```
+
+## Use Volume
+
+```
+docker run -it --name c1 -v studentdata:/student ubuntu bash
+```
+
+Inside container:
+
+```
+cd /student
+echo "Persistent Data" > data.txt
+```
+
+Delete container → data still exists 
+
+## Attach Same Volume to Another Container
+
+```
+docker run -it --name c2 -v studentdata:/student ubuntu bash
+cat /student/data.txt
+```
+
+> Volumes survive container deletion
+
+---
+
+# 7. Sharing Data Between Containers
+
+Container A:
+
+```
+echo "Shared File" > /student/shared.txt
+```
+
+Container B:
+
+```
+cat /student/shared.txt
+```
+
+> Both containers access same storage
+
+---
+
+# 8. Dockerfile (Create Your Own Image)
+
+```
+FROM ubuntu:latest
+LABEL maintainer="Student demo"
+RUN apt update && apt install -y figlet
+CMD ["echo", "hello Students"]
+```
+
+## Build Image
+
+```
+docker build -t ub1 .
+```
+
+## Run Image
+
+```
+docker run ub1
+```
+
+---
+
+# 9. Commit Container to Image
+
+```
+docker commit container_name newimage:v1
+```
+
+> Saves current container state as new image
+
+---
+
+# 10. Docker Hub (Push & Pull)
+
+## Tag Image
+
+```
+docker tag myimage:v1 username/myimage:v1
+```
+
+## Login
+
+```
+docker login
+```
+
+## Push
+
+```
+docker push username/myimage:v1
+```
+
+## Pull
+
+```
+docker pull username/myimage:v1
+```
+
+---
+
+# 11. Networking & Ports
+
+## Port Mapping
+
+```
+docker run -d -p 8080:80 nginx
+```
+
+| Left      | Right          |
+| --------- | -------------- |
+| Host Port | Container Port |
+
+Open browser:
+
+```
+http://localhost:8080
+```
+
+---
+
+# 12. Images vs Containers
+
+| Image    | Container       |
+| -------- | --------------- |
+| Template | Running process |
+| Static   | Dynamic         |
+| Reusable | Disposable      |
+
+Commands:
+
+```
+docker images
+docker ps -a
+```
+
+---
+
+# 13. Useful Inspection Commands
+
+## Inspect Volume Location
+
+```
+docker volume inspect studentdata
+```
+
+## Temporary Container (Auto Delete)
+
+```
+docker run --rm -it ubuntu bash
+```
+
+---
+
+# 14. Golden Rules (Remember These)
+
+```
+Image creates container
+Container runs process
+Volume stores data permanently
+Dockerfile builds image
+Docker Hub stores images online
+```
+
+---
+
+# One‑Line Answers
+
+**Why data lost after container delete?**
+
+> Container filesystem is temporary layer.
+
+**Why volume used?**
+
+> To store persistent data outside container.
+
+**docker run vs start?**
+
+> run = create + start, start = run existing container
+
+**Image vs Container?**
+
+> Image is blueprint, container is running instance
+

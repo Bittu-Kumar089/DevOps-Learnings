@@ -1,0 +1,3 @@
+Example: Run a container from Image and display the variable
+name inside it.
+Cmd=docker run -it -e MY_NAME=Hari ubuntu bash

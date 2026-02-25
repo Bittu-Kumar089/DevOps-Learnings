@@ -1,0 +1,12 @@
+1. mkdir C:\docker-volume-demo
+2. echo Hello from HOST machine > C:\docker-volume-demo\hostfile.txt
+
+3. docker run -it --name cv1 -v c:\docker-volume-demo:/data ubuntu bash
+
+4. Inside container 
+   ls
+     cd data
+      cat hostfile.txt
+5. Modify file INSIDE container 
+echo "Modified inside container" >> /data/hostfile.txt
+exit
