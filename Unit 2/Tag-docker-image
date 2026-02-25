@@ -1,0 +1,62 @@
+1) Pull any base image on host
+cmd= docker pull alpine:latest
+2) Tag that image with your Docker Hub username and login
+cmd=  docker tag alpine:latest harikrishna777/ap1:v1.1
+PS C:\Users\harik> docker login 
+Authenticating with existing credentials... [Username: harikrishna777]
+
+i Info → To login with a different account, run 'docker logout' followed by 'docker login'
+
+
+Login Succeeded
+PS C:\Users\harik> 
+4) Push to Docker Hub
+cmd= docker push harikrishna777/ap1:v1.1
+B) Update image by making changes inside a container, then push (Run → Change → Commit → Tag → Push)
+1) Run container from base/tagged image and interact
+cmd= docker run -it --name a1 harikrishna777/ap1:v1.1 sh
+/ # apk update
+v3.23.3-129-g1486cfebe03 [https://dl-cdn.alpinelinux.org/alpine/v3.23/main]
+v3.23.3-131-g88c6aa978ea [https://dl-cdn.alpinelinux.org/alpine/v3.23/community]
+OK: 27572 distinct packages available
+/ # apk add php
+(1/9) Installing php84-common (8.4.17-r0)
+(2/9) Installing argon2-libs (20190702-r5)
+(3/9) Installing ncurses-terminfo-base (6.5_p20251123-r0)
+(4/9) Installing libncursesw (6.5_p20251123-r0)
+(5/9) Installing libedit (20251016.3.1-r0)
+(6/9) Installing pcre2 (10.47-r0)
+(7/9) Installing xz-libs (5.8.2-r0)
+(8/9) Installing libxml2 (2.13.9-r0)
+(9/9) Installing php84 (8.4.17-r0)
+Executing busybox-1.37.0-r30.trigger
+OK: 18.7 MiB in 25 packages
+/ # php -v
+PHP 8.4.17 (cli) (built: Jan 20 2026 19:04:32) (NTS)
+Copyright (c) The PHP Group
+Built by Alpine Linux aports
+Zend Engine v4.4.17, Copyright (c) Zend Technologies
+/ # exit
+3) Commit container changes into a new image
+cmd= docker commit a1 harikrishna777/ap1:v1.2
+PS C:\Users\harik> docker commit a1 harikrishna777/ap1:v1.2
+sha256:5148f16df1a162f04dda57bc2a814e3e73f5d74f25a03f4a51773de8165f78c5
+PS C:\Users\harik> docker push harikrishna777/ap1:v1.2
+The push refers to repository [docker.io/harikrishna777/ap1]
+6d6297d1ade0: Pushed
+589002ba0eae: Layer already exists
+PS C:\Users\harik> docker run -it --name a2 harikrishna777/ap1:v1.2 sh
+>> 
+/ # php -v
+PHP 8.4.17 (cli) (built: Jan 20 2026 19:04:32) (NTS)
+Copyright (c) The PHP Group
+Built by Alpine Linux aports
+Zend Engine v4.4.17, Copyright (c) Zend Technologies
+/ # exit
+PS C:\Users\harik> 
+PS C:\Users\harik> docker images harikrishna777/ap1
+                                                                                                                                               i Info →   U  In Use
+IMAGE                     ID             DISK USAGE   CONTENT SIZE   EXTRA
+harikrishna777/ap1:v1.1   25109184c71b       13.1MB         3.95MB    U 
+harikrishna777/ap1:v1.2   5148f16df1a1       33.6MB         10.1MB    U 
+PS C:\Users\harik> 

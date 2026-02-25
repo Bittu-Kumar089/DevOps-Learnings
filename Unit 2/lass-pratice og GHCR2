@@ -1,0 +1,26 @@
+mkdir ghcr-mysql
+cd ghcr-mysql
+
+notepad init.sql
+notepad Dockerfile
+
+docker build -t ghcr.io/harikrishnamahato777/ghcr-mysql:v1 .
+
+docker run -d --name mysql1 -e MYSQL_ROOT_PASSWORD=Root@123 -e MYSQL_DATABASE=college_db -p 3306:3306 ghcr.io/harikrishnamahato777/ghcr-mysql:v1
+
+docker exec -it mysql1 mysql -uroot -pRoot@123 -e "SHOW DATABASES;"
+docker exec -it mysql1 mysql -uroot -pRoot@123 -e "USE college_db; SHOW TABLES;"
+docker exec -it mysql1 mysql -uroot -pRoot@123 -e "USE college_db; SELECT * FROM students;"
+
+docker login ghcr.io -u harikrishnamahato777
+
+docker push ghcr.io/harikrishnamahato777/ghcr-mysql:v1
+
+docker rm -f mysql1
+docker rmi ghcr.io/harikrishnamahato777/ghcr-mysql:v1
+
+docker pull ghcr.io/harikrishnamahato777/ghcr-mysql:v1
+
+docker run -d --name mysql2 -e MYSQL_ROOT_PASSWORD=Root@123 -e MYSQL_DATABASE=college_db -p 3306:3306 ghcr.io/harikrishnamahato777/ghcr-mysql:v1
+
+docker exec -it mysql2 mysql -uroot -pRoot@123 -e "USE college_db; SELECT * FROM students;"

@@ -1,0 +1,45 @@
+PS C:\Users\harik> mkdir ubuntu-docker
+
+    Directory: C:\Users\harik
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          18-02-2026    00:25                ubuntu-docker
+
+PS C:\Users\harik> cd ubuntu-docker
+PS C:\Users\harik\ubuntu-docker> New-Item Dockerfile
+
+    Directory: C:\Users\harik\ubuntu-docker
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          18-02-2026    00:26              0 Dockerfile
+
+PS C:\Users\harik\ubuntu-docker> docker build -t harikrishna777/ubuntu-php:v1.0 .
+[+] Building 0.4s (1/1) FINISHED                                                                                                              docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                          0.2s
+ => => transferring dockerfile: 31B                                                                                                                           0.0s
+ERROR: failed to build: failed to solve: the Dockerfile cannot be empty
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/sf788bpqf56uhso1bqi7w0l0o
+PS C:\Users\harik\ubuntu-docker> code Dockerfile
+PS C:\Users\harik\ubuntu-docker> code Dockerfile
+PS C:\Users\harik\ubuntu-docker> FROM ubuntu:latest
+>> 
+>> LABEL maintainer="harikrishna777"
+>> 
+>> RUN apt update && \
+>>     apt install -y php && \
+>>     apt clean
+>> 
+>> CMD ["echo", "Hello Students"]
+>> 
+ParserError: 
+Line |
+   1 |  FROM ubuntu:latest
+     |  ~~~~
+     | The 'from' keyword is not supported in this version of the language.
+PS C:\Users\harik\ubuntu-docker> rm Dockerfile
+PS C:\Users\harik\ubuntu-docker> notepad dockerfile
+PS C:\Users\harik\ubuntu-docker> ren dockerfile.txt dockerfile
+PS C:\Users\harik\ubuntu-docker> docker build -t harikrishna777/ubuntu-php:v1.0 .

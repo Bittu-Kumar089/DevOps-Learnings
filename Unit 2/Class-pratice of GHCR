@@ -1,0 +1,13 @@
+follow step by step
+mkdir ghcr-flask
+cd ghcr-flask
+notepad app.py(create python file)
+notepad requirements.txt
+notepad Dockerfile
+docker build -t ghcr.io/harikrishnamahato777/ghcr-flask:v1 .
+login your githhub username and genearte token as password
+docker push ghcr.io/harikrishnamahato777/ghcr-flask:v1
+docker rmi ghcr.io/harikrishnamahato777/ghcr-flask:v1
+docker pull ghcr.io/harikrishnamahato777/ghcr-flask:v1
+docker run -d --name flask1 -p 5000:5000 ghcr.io/harikrishnamahato777/ghcr-flask:v1
+open in browser(http://localhost:5000)

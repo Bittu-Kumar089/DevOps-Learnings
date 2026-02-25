@@ -1,0 +1,59 @@
+Docker file#3 for Python application
+
+# 1. Base image
+
+FROM python:3.11-slim
+
+# 2. Set working directory
+
+WORKDIR /app
+
+# 3. Copy dependency file
+
+COPY requirements.txt
+
+.# 4. Install dependenciesR
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 5. Copy application code
+
+COPY . .
+
+# 6. Expose port
+
+EXPOSE 5000
+
+# 7. Run the app
+
+CMD ["python", "app.py"]
+
+App.py
+
+from flask import Flask
+
+app = Flask(_name_)
+
+@app.route("/")
+
+def home():
+
+return "Hello from Docker!”
+
+app.run(host="0.0.0.0", port=5000)
+
+
+
+Cmd=  mkdir dockerfile_python
+cd dockerfile_python
+notepad dockerfile
+ren dockerfile.txt dockerfile
+dir
+
+ notepad requirments.txt
+notepad app.py
+dir
+docker build -t harikrishna777/python-flask:v1.0 .
+docker run -d --name flask1 -p 5000:5000 harikrishna777/python-flask:v1.0
+docker login
+docker push harikrishna777/python-flask:v1.0

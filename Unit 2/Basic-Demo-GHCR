@@ -1,0 +1,22 @@
+Create Folder
+mkdir ghcr-demo
+cd ghcr-demo
+Create Dockerfile
+Create file:
+Dockerfile,
+then follow one bye one step
+Build Docker Image
+docker build -t ghcr.io/harikrishnamahato777/ghcr-demo .
+Login to GHCR
+keep your github repositry name
+keep password where Pat which u create genrate tocken that one
+Push Image to GHCR
+docker push ghcr.io/harikrishnamahato777/ghcr-demo
+Delete Local Image First
+docker rmi ghcr.io/harikrishnamahato777/ghcr-demo
+Pull Again from GHCRdocker 
+pull ghcr.io/harikrishnamahato777/ghcr-demo
+Run Container
+docker run -p 8080:80 ghcr.io/harikrishnamahato777/ghcr-demo
+Open browser:
+http://localhost:8080

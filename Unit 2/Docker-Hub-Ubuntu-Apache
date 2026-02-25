@@ -1,0 +1,18 @@
+1.Update the ubuntu
+container, install apache and
+php, then push updated on
+to docker hub.
+cmd= PS C:\Users\harik> docker run -it --name u1 ubuntu:latest bash
+root@a66a28628c8a:/# apt update
+apt install -y apache2 php
+apache2 -v
+php -v
+exit
+docker commit u1 harikrishna777/ubuntu-apache-php:v1.0
+docker login
+docker push harikrishna777/ubuntu-apache-php:v1.0
+2) Compare size of base image vs updated image (after commit)
+Show base Ubuntu size
+Cmd= docker images ubuntu
+docker images harikrishna777/ubuntu-apache-php
+docker images | findstr "ubuntu harikrishna777/ubuntu-apache-php"
