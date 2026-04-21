@@ -1,2 +1,0 @@
-Passing Environment Variable:
-cmd=docker run -e APP_PORT nginx env
