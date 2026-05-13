@@ -1,158 +1,223 @@
-# Unit 4 – Maven Build Automation & Docker Integration ⚙️🐳
+# Unit 5 – Continuous Integration with GitHub Actions ⚙️🚀🐳
 
-This branch contains the practical work, notes, screenshots, and documentation related to **Unit 4: Maven Build Automation and Docker Integration**.
+This branch contains the practical work, notes, screenshots, and documentation related to **Unit 5: Continuous Integration (CI) with GitHub Actions**.
 
-The focus of this unit is to understand **build automation using Maven**, lifecycle phases, dependency management, plugins, and **Dockerizing Maven-based Java applications**, which are essential skills in modern DevOps workflows.
+The focus of this unit is to understand **workflow automation**, **CI/CD pipelines**, and integration of **Docker with GitHub Actions** to automate application builds and deployments.
 
----
-
-# 🔍 Topics Covered in Unit 4
-
-## 📦 Maven Build Automation
-
-- Introduction to build automation  
-- Why build tools exist  
-- Problems solved by automated builds  
-- Introduction to Maven  
-- Project Object Model (POM)  
-- Standard Maven directory structure  
-
-### Maven Build Lifecycle Phases:
-
-- validate  
-- compile  
-- test  
-- package  
-- verify  
-- install  
-- deploy  
-
-### Dependency Concepts:
-
-- Parent POM  
-- Dependency scopes  
-- Transitive dependencies  
-- Version conflicts and resolution  
-- Dependency management  
+This unit helps build practical knowledge required for **modern DevOps automation workflows**.
 
 ---
 
-## 🔌 Maven Plugins
+# 🔍 Topics Covered in Unit 5
 
-- Understanding Maven plugins  
-- Plugin execution basics  
+## ⚙️ Continuous Integration with GitHub Actions
 
-### Important Plugins Covered:
+- Introduction to Continuous Integration (CI)  
+- Understanding workflow automation  
+- Events and triggers  
+- Workflow directory structure  
 
-- Maven Compiler Plugin  
-- Maven Surefire Plugin (Unit Testing)  
-- Maven Shade Plugin (Uber/Fat JAR)  
+### Key Components of GitHub Actions
+
+- Workflows  
+- Jobs  
+- Steps  
+- Actions  
+- Runners  
 
 ---
 
-## 🐳 Maven and Docker Integration
+## 🔔 Workflow Triggers
 
-- Introduction to Dockerizing Maven applications  
-- Using dockerfile-maven-plugin  
-- Creating Dockerfile for Maven project  
+Different types of triggers used in workflows:
+
+- push trigger  
+- pull request trigger  
+- schedule trigger  
+- manual workflow trigger  
+
+Understanding how workflows automatically run based on events.
+
+---
+
+## 🧩 Jobs and Steps
+
+- Understanding jobs in workflows  
+- Running multiple steps inside jobs  
+- Using shell commands in steps  
+- Matrix strategies for multiple environments  
+- Running parallel jobs  
+- Multi-job workflows  
+
+---
+
+## 🛒 Using Marketplace Actions
+
+- Using pre-built actions from GitHub Marketplace  
+- Using language-specific actions  
+- Implementing caching for faster builds  
+
+Examples include:
+
+- Python setup actions  
+- Java setup actions  
+- Node.js setup actions  
+
+---
+
+## 🖥️ Runners in GitHub Actions
+
+Understanding runner environments:
+
+- GitHub-hosted runners  
+- Self-hosted runners  
+
+Runner security and management concepts.
+
+---
+
+## 🐳 Docker & GitHub Actions
+
+- Building Docker images inside CI pipelines  
+- Running Docker commands in workflows  
+
+Docker operations include:
+
 - Building Docker images  
-- Running containerized Java applications  
+- Pushing images to Docker Hub  
+- Pushing images to GitHub Container Registry (GHCR)  
+
+---
+
+## ☁️ Deployments Using GitHub Actions
+
+Deploying applications to:
+
+- Servers  
+- Cloud platforms  
+
+Understanding automated deployment workflows.
 
 ---
 
 # 📂 Content Organization
 
-This branch is organized in a **day-wise / interval-wise format** based on lab progression.
+This branch is organized in a **day-wise / interval-wise format** based on lab sessions.
 
 Each folder may include:
 
 - 📄 Task descriptions and notes  
-- 📸 Screenshots of execution  
-- 📝 Observations and learning outcomes  
+- 📸 Screenshots of workflow execution  
+- 📝 Observations and outputs  
 - 📁 Documentation files  
-- 📌 Important Maven and Docker commands  
-- 📦 Sample Maven project files  
-- 🐳 Dockerfiles  
+- 📌 Workflow YAML files  
+- 🐳 Docker-related files  
 
 ---
+
+# 📁 Folder Naming Pattern
+
+Folders may follow patterns like:
+
+- Day-1  
+- Day-2  
+- Day-3  
+
+or
+
+- Week-1  
+- Week-2  
 
 
 ---
 
 # 🧪 Practical Work Included
 
-The following practical tasks are performed in this unit:
+## ⚙️ Creating GitHub Workflows
 
-## ⚙️ Maven Setup & Project Creation
-
-- Installing Maven  
-- Verifying Maven installation  
-- Creating Maven project  
-- Understanding POM file  
-- Exploring Maven directory structure  
+- Creating `.github/workflows` directory  
+- Writing basic workflow YAML files  
+- Running workflows using push triggers  
+- Understanding workflow logs  
 
 ---
 
-## 🔄 Maven Lifecycle Execution
+## 🔔 Working with Workflow Triggers
 
-Running lifecycle commands:
+Example trigger:
 
-```bash
-mvn validate
-mvn compile
-mvn test
-mvn package
-mvn install
-mvn deploy
+```yaml
+on:
+  push:
+  pull_request:
+  schedule:
 ```
+---
+
+## ☁️ Deployment Workflows
+
+Deploying applications automatically using workflows.
+
+Deployment targets include:
+
+- Remote servers  
+- Cloud platforms  
+
+---
+
 ## 🔄 Update Pattern
 
-Content is added after completing practical tasks or lab sessions.
+Content is added after completing practical sessions.
 
 Updates may be:
 
 - Day-wise  
 - Week-wise  
-- Task-wise  
+- Task-based  
 
 Each commit represents:
 
-- ✅ Completed task  
-- ✅ Working command execution  
-- ✅ Verified concept  
+- ✅ Completed workflow  
+- ✅ Successful execution  
+- ✅ Verified automation  
 
-Screenshots are included as proof of successful execution.
+Screenshots are included as proof of successful workflow execution.
 
 ---
 
 ## 📌 Learning Outcomes
 
-After completing Unit 4, the following skills are developed:
+After completing Unit 5, the following skills are developed:
 
-- ✔ Understanding Maven build automation  
-- ✔ Creating and managing Maven projects  
-- ✔ Managing dependencies  
-- ✔ Running automated tests  
-- ✔ Using Maven plugins  
-- ✔ Creating executable JAR files  
-- ✔ Dockerizing Java applications  
-- ✔ Running containerized applications  
+- ✔ Understanding Continuous Integration (CI)  
+- ✔ Creating GitHub Actions workflows  
+- ✔ Automating project builds  
+- ✔ Using workflow triggers  
+- ✔ Running multi-job workflows  
+- ✔ Using marketplace actions  
+- ✔ Implementing caching  
+- ✔ Working with runners  
+- ✔ Integrating Docker into CI pipelines  
+- ✔ Deploying applications automatically  
 
 These skills are important for:
 
-- ⚙️ DevOps Practices  
-- ☁️ Cloud-Based Applications  
-- 🧑‍💻 Java Development  
-- 🔄 CI/CD Workflows  
+- ⚙️ DevOps Automation  
+- ☁️ Cloud Deployment  
+- 🚀 CI/CD Pipelines  
+- 🧑‍💻 Modern Software Development  
 
 ---
 
 ## 📎 Tools & Technologies Used
 
-- Java (JDK 17 or above)  
-- Apache Maven  
+- Git  
+- GitHub  
+- GitHub Actions  
 - Docker  
-- Git & GitHub  
+- Docker Hub  
+- GitHub Container Registry (GHCR)  
+- YAML Workflow Files  
 - VS Code / IntelliJ IDEA  
 - Command Line Interface (CLI)  
 
@@ -164,9 +229,12 @@ These skills are important for:
 
 This branch will be continuously updated with:
 
-- Practical tasks  
-- Commands  
+- Workflow files  
+- Docker configurations  
 - Screenshots  
+- Commands  
 - Documentation  
 
-as **Unit 4 progresses**.
+as **Unit 5 progresses**.
+
+---
