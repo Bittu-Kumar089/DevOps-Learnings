@@ -1,57 +1,172 @@
-# Unit 3 – Microservices with Docker Compose 🚀
+# Unit 4 – Maven Build Automation & Docker Integration ⚙️🐳
 
-This section contains the practical work, notes, configurations, and documentation related to **Microservices Architecture using Docker Compose**.
+This branch contains the practical work, notes, screenshots, and documentation related to **Unit 4: Maven Build Automation and Docker Integration**.
 
-The focus of this unit is to understand how **multiple services can run together as a microservice-based application** using Docker containers and Docker Compose.
+The focus of this unit is to understand **build automation using Maven**, lifecycle phases, dependency management, plugins, and **Dockerizing Maven-based Java applications**, which are essential skills in modern DevOps workflows.
 
 ---
 
-# 🔍 Topics Covered
+# 🔍 Topics Covered in Unit 4
 
-### Microservices Architecture
-- Need for Microservices
-- Monolithic vs Microservices Architecture
-- Advantages of Microservices
-  - Scalability
-  - Service Isolation
-  - Agility and faster development
-- API Gateway concept
+## 📦 Maven Build Automation
 
-### Docker Compose
-- Introduction to Docker Compose
-- YAML file structure
-- Writing `docker-compose.yml`
-- Version field
-- Services configuration
-- Volumes
-- Networks
+- Introduction to build automation  
+- Why build tools exist  
+- Problems solved by automated builds  
+- Introduction to Maven  
+- Project Object Model (POM)  
+- Standard Maven directory structure  
 
-### Configuration Management
-- Environment variables
-- Secrets and configs
-- Build vs Image fields in YAML
-- Service dependency ordering
+### Maven Build Lifecycle Phases:
+
+- validate  
+- compile  
+- test  
+- package  
+- verify  
+- install  
+- deploy  
+
+### Dependency Concepts:
+
+- Parent POM  
+- Dependency scopes  
+- Transitive dependencies  
+- Version conflicts and resolution  
+- Dependency management  
+
+---
+
+## 🔌 Maven Plugins
+
+- Understanding Maven plugins  
+- Plugin execution basics  
+
+### Important Plugins Covered:
+
+- Maven Compiler Plugin  
+- Maven Surefire Plugin (Unit Testing)  
+- Maven Shade Plugin (Uber/Fat JAR)  
+
+---
+
+## 🐳 Maven and Docker Integration
+
+- Introduction to Dockerizing Maven applications  
+- Using dockerfile-maven-plugin  
+- Creating Dockerfile for Maven project  
+- Building Docker images  
+- Running containerized Java applications  
 
 ---
 
 # 📂 Content Organization
 
-This folder may include:
+This branch is organized in a **day-wise / interval-wise format** based on lab progression.
 
-📄 Notes and explanations of microservices concepts  
-📸 Screenshots of Docker Compose execution  
-📝 Observations and learning outcomes  
-📁 Configuration files (`docker-compose.yml`)  
-📄 Documentation files (if required)
+Each folder may include:
 
----
-
-# 🔄 Update Pattern
-
-- Content will be updated after completing each practical or concept
-- Updates may include configuration files, screenshots, and documentation
-- Each commit represents completion of a task or concept
+- 📄 Task descriptions and notes  
+- 📸 Screenshots of execution  
+- 📝 Observations and learning outcomes  
+- 📁 Documentation files  
+- 📌 Important Maven and Docker commands  
+- 📦 Sample Maven project files  
+- 🐳 Dockerfiles  
 
 ---
 
-📌 This section will be continuously updated as **Microservices and Docker Compose topics progress**.
+
+---
+
+# 🧪 Practical Work Included
+
+The following practical tasks are performed in this unit:
+
+## ⚙️ Maven Setup & Project Creation
+
+- Installing Maven  
+- Verifying Maven installation  
+- Creating Maven project  
+- Understanding POM file  
+- Exploring Maven directory structure  
+
+---
+
+## 🔄 Maven Lifecycle Execution
+
+Running lifecycle commands:
+
+```bash
+mvn validate
+mvn compile
+mvn test
+mvn package
+mvn install
+mvn deploy
+```
+## 🔄 Update Pattern
+
+Content is added after completing practical tasks or lab sessions.
+
+Updates may be:
+
+- Day-wise  
+- Week-wise  
+- Task-wise  
+
+Each commit represents:
+
+- ✅ Completed task  
+- ✅ Working command execution  
+- ✅ Verified concept  
+
+Screenshots are included as proof of successful execution.
+
+---
+
+## 📌 Learning Outcomes
+
+After completing Unit 4, the following skills are developed:
+
+- ✔ Understanding Maven build automation  
+- ✔ Creating and managing Maven projects  
+- ✔ Managing dependencies  
+- ✔ Running automated tests  
+- ✔ Using Maven plugins  
+- ✔ Creating executable JAR files  
+- ✔ Dockerizing Java applications  
+- ✔ Running containerized applications  
+
+These skills are important for:
+
+- ⚙️ DevOps Practices  
+- ☁️ Cloud-Based Applications  
+- 🧑‍💻 Java Development  
+- 🔄 CI/CD Workflows  
+
+---
+
+## 📎 Tools & Technologies Used
+
+- Java (JDK 17 or above)  
+- Apache Maven  
+- Docker  
+- Git & GitHub  
+- VS Code / IntelliJ IDEA  
+- Command Line Interface (CLI)  
+
+---
+
+## 📌 Branch Status
+
+🚧 **Active Development**
+
+This branch will be continuously updated with:
+
+- Practical tasks  
+- Commands  
+- Screenshots  
+- Documentation  
+
+as **Unit 4 progresses**.
